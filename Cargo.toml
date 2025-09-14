@@ -1,0 +1,65 @@
+[package]
+name = "webmock-cli"
+version = "0.1.0"
+edition = "2021"
+authors = ["WebMock CLI Team"]
+description = "A CLI tool for recording and mocking web pages"
+license = "MIT"
+
+[[bin]]
+name = "webmock"
+path = "src/bin/webmock.rs"
+
+[[example]]
+name = "create_test_snapshot"
+path = "docs/examples/create_test_snapshot.rs"
+
+[lib]
+name = "webmock_cli"
+path = "src/lib.rs"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] }
+clap_complete ={ version = "*"}
+tokio = { version = "1.0", features = ["full"] }
+futures = "0.3"
+chromiumoxide = { git = "https://github.com/mattsse/chromiumoxide", branch = "main" }
+hyper = { version = "1.7", features = ["full", "server", "client"] }
+hyper-util = { version = "0.1", features = ["full"] }
+hyper-tls = "0.6"
+rustls = "0.23"
+tokio-rustls = "0.26"
+rcgen = "0.13"
+http-body-util = "0.1"
+http-body = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rmp-serde = "1.1"
+flate2 = "1.0"
+thiserror = "2.0"
+chrono = { version = "0.4", features = ["serde"] }
+
+url = "2.4"
+mime = "0.3"
+mime_guess = "2.0"
+base64 = "0.22"
+html-escape = "0.2"
+dirs = "6.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+indicatif = "0.18"
+console = "0.16"
+colored = "3.0"
+atty = "0.2"
+bytes = "1.0"
+pin-project-lite = "0.2"
+tempfile = "3.0"
+sys-info = "0.9.1"
+
+[dev-dependencies]
+tempfile = "3.0"
+wiremock = "0.6"
+test-case = "3"
+reqwest = { version = "0.12", features = ["json"] }
+serde_json = "1.0"
+futures = "0.3"
