@@ -53,11 +53,11 @@ colored = "3.0"
 atty = "0.2"
 bytes = "1.0"
 pin-project-lite = "0.2"
-tempfile = "3.0"
+tempfile = "3.23"
 sys-info = "0.9.1"
 
 [dev-dependencies]
-tempfile = "3.0"
+tempfile = "3.23"
 wiremock = "0.6"
 test-case = "3"
 reqwest = { version = "0.12", features = ["json"] }
