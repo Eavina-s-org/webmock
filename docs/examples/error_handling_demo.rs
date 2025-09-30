@@ -10,7 +10,7 @@ async fn main() {
     // Demo 1: Input validation with helpful feedback
     UserFeedback::section("📋 Input Validation Demo");
     
-    let test_cases = vec![
+    let test_cases = [
         ("", "Empty URL"),
         ("ftp://example.com", "Unsupported protocol"),
         ("not-a-url", "Invalid URL format"),
@@ -31,7 +31,7 @@ async fn main() {
     // Demo 2: Snapshot name validation
     UserFeedback::section("📸 Snapshot Name Validation Demo");
     
-    let name_cases = vec![
+    let name_cases = [
         ("my-snapshot", "Valid name"),
         ("test/invalid", "Contains path separator"),
         ("test snapshot", "Contains space"),
@@ -53,7 +53,7 @@ async fn main() {
     // Demo 3: Enhanced error display
     UserFeedback::section("🚨 Enhanced Error Display Demo");
     
-    let errors = vec![
+    let errors = [
         WebMockError::ChromeNotFound,
         WebMockError::PortInUse(8080),
         WebMockError::SnapshotNotFound("missing-snapshot".to_string()),

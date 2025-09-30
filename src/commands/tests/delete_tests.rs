@@ -141,7 +141,7 @@ fn test_error_handling_and_user_messages() {
     use crate::error::WebMockError;
 
     // Test different error types and their user messages
-    let errors = vec![
+    let errors = [
         WebMockError::SnapshotNotFound("test".to_string()),
         WebMockError::config("Test config error"),
         WebMockError::permission_denied("Test permission error"),

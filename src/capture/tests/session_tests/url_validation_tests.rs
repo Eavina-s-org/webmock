@@ -28,7 +28,7 @@ async fn test_capture_url_validation() {
     let mut session = CaptureSession::new(storage_arc).await.unwrap();
 
     // Test invalid URL formats
-    let invalid_urls = vec![
+    let invalid_urls = [
         "",
         "not-a-url",
         "ftp://example.com",
@@ -47,8 +47,8 @@ async fn test_capture_url_validation() {
 #[test]
 fn test_timeout_validation() {
     // Test timeout parameter validation
-    let valid_timeouts = vec![1, 5, 30, 60, 300];
-    let invalid_timeouts = vec![0, 601, 1000];
+    let valid_timeouts = [1, 5, 30, 60, 300];
+    let invalid_timeouts = [0, 601, 1000];
 
     for timeout in valid_timeouts {
         // Should be within reasonable bounds

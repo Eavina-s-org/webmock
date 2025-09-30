@@ -23,7 +23,7 @@ impl BrowserController {
         );
 
         // Configure browser with minimal proxy settings to avoid HTTPS issues
-        let args = vec![
+        let args = [
             // Basic browser settings
             "--no-sandbox".to_string(),
             "--disable-dev-shm-usage".to_string(),

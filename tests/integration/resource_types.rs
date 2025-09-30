@@ -22,7 +22,7 @@ async fn test_various_content_types() {
     let mut requests = Vec::new();
 
     // Test different content types
-    let test_cases = vec![
+    let test_cases = [
         (
             "text/html",
             b"<html><body>HTML content</body></html>".to_vec(),

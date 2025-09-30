@@ -122,7 +122,7 @@ async fn test_title_error_handling() {
 #[tokio::test]
 async fn test_page_title_extraction_simulation() {
     // Test title extraction logic without browser
-    let test_cases = vec![
+    let test_cases = [
         ("Example Page", "Example Page"),
         ("", "Untitled"),
         ("   ", "Untitled"),

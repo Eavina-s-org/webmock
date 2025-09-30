@@ -29,7 +29,7 @@ impl HttpProxy {
     /// Generate a self-signed certificate for TLS MITM
     fn generate_tls_config() -> Result<Arc<ServerConfig>> {
         // Generate a self-signed certificate with broad domain coverage
-        let subject_alt_names = vec![
+        let subject_alt_names = [
             "localhost".to_string(),
             "127.0.0.1".to_string(),
             "::1".to_string(),

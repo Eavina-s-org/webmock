@@ -3,7 +3,7 @@ use std::collections::HashMap;
 #[test]
 fn test_parse_host_port() {
     // Test host and port parsing logic from handle_connect_request
-    let test_cases = vec![
+    let test_cases = [
         ("example.com:443", ("example.com", 443)),
         ("localhost:8080", ("localhost", 8080)),
         ("192.168.1.1:443", ("192.168.1.1", 443)),

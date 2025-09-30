@@ -21,7 +21,7 @@ async fn test_register_and_unregister_task() {
 
     manager.register_task("test_task".to_string(), handle).await;
     assert_eq!(manager.active_task_count().await, 1);
-    assert_eq!(manager.active_task_names().await, vec!["test_task"]);
+    assert_eq!(manager.active_task_names().await, ["test_task"]);
 
     // Unregister without abort
     let handle = manager.unregister_task("test_task", false).await;

@@ -3,7 +3,7 @@ fn test_timeout_handling() {
     use std::time::Duration;
 
     // Test timeout duration calculations
-    let timeouts = vec![1, 5, 30, 60, 300];
+    let timeouts = [1, 5, 30, 60, 300];
 
     for timeout_secs in timeouts {
         let duration = Duration::from_secs(timeout_secs);

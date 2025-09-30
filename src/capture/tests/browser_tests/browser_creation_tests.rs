@@ -54,7 +54,7 @@ async fn test_browser_controller_creation_without_chrome() {
 #[test]
 fn test_browser_configuration_parameters() {
     // Test various browser configuration scenarios
-    let ports = vec![0, 8080, 3000, 9000, 65535];
+    let ports = [0, 8080, 3000, 9000, 65535];
 
     for port in ports {
         // Test that port numbers are valid (u16 max is 65535, so this is always true)
@@ -99,7 +99,7 @@ fn test_network_configuration() {
 #[test]
 fn test_browser_launch_arguments() {
     // Test browser launch argument construction
-    let args = vec![
+    let args = [
         "--headless",
         "--no-sandbox",
         "--disable-dev-shm-usage",

@@ -164,7 +164,7 @@ fn test_error_recovery_logic() {
     use crate::error::WebMockError;
 
     // Test recoverable errors
-    let recoverable_errors = vec![WebMockError::Timeout(30), WebMockError::PortInUse(8080)];
+    let recoverable_errors = [WebMockError::Timeout(30), WebMockError::PortInUse(8080)];
 
     for error in recoverable_errors {
         assert!(
@@ -175,7 +175,7 @@ fn test_error_recovery_logic() {
     }
 
     // Test non-recoverable errors
-    let non_recoverable_errors = vec![
+    let non_recoverable_errors = [
         WebMockError::ChromeNotFound,
         WebMockError::SnapshotNotFound("test".to_string()),
         WebMockError::InvalidUrl("invalid".to_string(), "bad format".to_string()),

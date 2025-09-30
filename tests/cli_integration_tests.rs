@@ -69,11 +69,24 @@ fn test_cli_generate_completion() {
 fn test_cli_list_empty_snapshots() {
     let (_temp_dir, data_dir) = setup_test_env();
 
-    let output = run_webmock_command(&["list"], &[("WEBMOCK_DATA_DIR", &data_dir)]);
+    let output = run_webmock_command(&["list", "--storage", &data_dir], &[]);
+
+    // 打印调试信息
+    println!("Exit status: {}", output.status);
+    println!("Stdout: {}", String::from_utf8_lossy(&output.stdout));
+    println!("Stderr: {}", String::from_utf8_lossy(&output.stderr));
 
     assert!(output.status.success());
     let stdout = String::from_utf8_lossy(&output.stdout);
-    assert!(stdout.contains("No Snapshots Found") || stdout.contains("No snapshots"));
+
+    // 期望看到空快照的输出
+    assert!(
+        stdout.contains("No Snapshots Found")
+            || stdout.contains("No snapshots")
+            || stdout.contains("You haven't created any snapshots yet"),
+        "Expected empty snapshots message, but got: {}",
+        stdout
+    );
 }
 
 #[test]
@@ -99,10 +112,7 @@ fn test_cli_no_command() -> Result<(), Box<dyn std::error::Error>> {
 fn test_cli_inspect_nonexistent() {
     let (_temp_dir, data_dir) = setup_test_env();
 
-    let output = run_webmock_command(
-        &["inspect", "nonexistent"],
-        &[("WEBMOCK_DATA_DIR", &data_dir)],
-    );
+    let output = run_webmock_command(&["inspect", "nonexistent", "--storage", &data_dir], &[]);
 
     assert!(!output.status.success());
     let stderr = String::from_utf8_lossy(&output.stderr);
@@ -113,10 +123,7 @@ fn test_cli_inspect_nonexistent() {
 fn test_cli_delete_nonexistent() {
     let (_temp_dir, data_dir) = setup_test_env();
 
-    let output = run_webmock_command(
-        &["delete", "nonexistent"],
-        &[("WEBMOCK_DATA_DIR", &data_dir)],
-    );
+    let output = run_webmock_command(&["delete", "nonexistent", "--storage", &data_dir], &[]);
 
     assert!(!output.status.success());
     let stderr = String::from_utf8_lossy(&output.stderr);
@@ -127,10 +134,7 @@ fn test_cli_delete_nonexistent() {
 fn test_cli_serve_nonexistent() {
     let (_temp_dir, data_dir) = setup_test_env();
 
-    let output = run_webmock_command(
-        &["serve", "nonexistent"],
-        &[("WEBMOCK_DATA_DIR", &data_dir)],
-    );
+    let output = run_webmock_command(&["serve", "nonexistent", "--storage", &data_dir], &[]);
 
     assert!(!output.status.success());
     let stderr = String::from_utf8_lossy(&output.stderr);
@@ -162,8 +166,15 @@ fn test_cli_serve_with_invalid_port() -> Result<(), Box<dyn std::error::Error>> 
     let (_temp_dir, data_dir) = setup_test_env();
 
     let output = run_webmock_command(
-        &["serve", "--port", "0", "nonexistent"],
-        &[("WEBMOCK_DATA_DIR", &data_dir)],
+        &[
+            "serve",
+            "--port",
+            "0",
+            "nonexistent",
+            "--storage",
+            &data_dir,
+        ],
+        &[],
     );
 
     assert!(!output.status.success());

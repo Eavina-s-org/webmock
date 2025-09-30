@@ -25,7 +25,7 @@ async fn test_capture_with_valid_urls() {
     let mut session = CaptureSession::new(storage_arc).await.unwrap();
 
     // Test valid URLs (will likely fail due to no Chrome, but tests validation)
-    let valid_urls = vec![
+    let valid_urls = [
         "http://httpbin.org/get",
         "https://example.com",
         "http://localhost:3000",

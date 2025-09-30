@@ -6,7 +6,7 @@ async fn test_browser_navigation_simulation() {
     setup_test_env();
 
     // Test navigation logic without actually requiring Chrome
-    let test_urls = vec![
+    let test_urls = [
         "https://httpbin.org/get",
         "https://example.com",
         "http://localhost:3000",
@@ -30,7 +30,7 @@ async fn test_concurrent_browser_operations() {
     // Test that browser operations can handle concurrent access patterns
     use tokio::time::{sleep, Duration};
 
-    let tasks = vec![
+    let tasks = [
         tokio::spawn(async { sleep(Duration::from_millis(1)).await }),
         tokio::spawn(async { sleep(Duration::from_millis(2)).await }),
         tokio::spawn(async { sleep(Duration::from_millis(1)).await }),

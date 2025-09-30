@@ -46,7 +46,7 @@ fn test_sub_progress() {
 fn test_operation_summary() {
     let reporter = ProgressReporter::new();
     let duration = Duration::from_secs(5);
-    let details = vec![
+    let details = [
         ("Files processed", "42".to_string()),
         ("Total size", "1.2 MB".to_string()),
     ];

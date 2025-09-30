@@ -11,7 +11,7 @@ fn test_error_display_show_error() {
 
 #[test]
 fn test_error_display_different_error_types() {
-    let errors = vec![
+    let errors = [
         WebMockError::ChromeNotFound,
         WebMockError::PortInUse(8080),
         WebMockError::InvalidUrl("invalid".to_string(), "bad format".to_string()),

@@ -3,7 +3,7 @@ use url::Url;
 #[test]
 fn test_url_validation_comprehensive() {
     // Valid HTTP/HTTPS URLs
-    let valid_urls = vec![
+    let valid_urls = [
         "http://example.com",
         "https://example.com",
         "http://localhost:3000",
@@ -27,7 +27,7 @@ fn test_url_validation_comprehensive() {
 
 #[test]
 fn test_invalid_url_schemes() {
-    let invalid_schemes = vec![
+    let invalid_schemes = [
         "ftp://example.com",
         "file:///etc/passwd",
         "javascript:alert('xss')",
@@ -51,7 +51,7 @@ fn test_invalid_url_schemes() {
 
 #[test]
 fn test_malformed_urls() {
-    let malformed_urls = vec![
+    let malformed_urls = [
         "",
         "not-a-url",
         "http://",
@@ -69,7 +69,7 @@ fn test_malformed_urls() {
 #[test]
 fn test_url_parsing_edge_cases() {
     // Test URL parsing with various edge cases
-    let edge_cases = vec![
+    let edge_cases = [
         ("http://localhost", true),
         ("https://127.0.0.1", true),
         ("http://[::1]", true), // IPv6 localhost

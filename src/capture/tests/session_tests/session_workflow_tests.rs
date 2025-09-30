@@ -63,7 +63,7 @@ async fn test_capture_url_validation() {
     let mut session = CaptureSession::new(storage_arc).await.unwrap();
 
     // Test invalid URL formats
-    let invalid_urls = vec![
+    let invalid_urls = [
         "",
         "not-a-url",
         "ftp://example.com",
@@ -89,7 +89,7 @@ async fn test_capture_with_valid_urls() {
     let mut session = CaptureSession::new(storage_arc).await.unwrap();
 
     // Test valid URLs (will likely fail due to no Chrome, but tests validation)
-    let valid_urls = vec![
+    let valid_urls = [
         "http://httpbin.org/get",
         "https://example.com",
         "http://localhost:3000",
@@ -188,8 +188,8 @@ async fn test_stop_session_without_start() {
 #[test]
 fn test_timeout_validation() {
     // Test timeout parameter validation
-    let valid_timeouts = vec![1, 5, 30, 60, 300];
-    let invalid_timeouts = vec![0, 601, 1000];
+    let valid_timeouts = [1, 5, 30, 60, 300];
+    let invalid_timeouts = [0, 601, 1000];
 
     for timeout in valid_timeouts {
         // Should be within reasonable bounds
@@ -205,14 +205,14 @@ fn test_timeout_validation() {
 
 #[test]
 fn test_snapshot_name_validation() {
-    let valid_names = vec![
+    let valid_names = [
         "test-snapshot",
         "my_capture",
         "snapshot123",
         "valid-name_with-chars",
     ];
 
-    let invalid_names = vec![
+    let invalid_names = [
         "",
         "invalid/name",
         "test snapshot", // spaces
@@ -291,7 +291,7 @@ fn test_error_handling_patterns() {
     use crate::error::WebMockError;
 
     // Test different error types that might occur during capture
-    let errors = vec![
+    let errors = [
         WebMockError::ChromeNotFound,
         WebMockError::InvalidUrl("invalid".to_string(), "bad format".to_string()),
         WebMockError::Timeout(30),
@@ -343,7 +343,7 @@ async fn test_storage_integration() {
 fn test_url_parsing_and_validation() {
     use url::Url;
 
-    let test_cases = vec![
+    let test_cases = [
         ("http://example.com", true),
         ("https://example.com", true),
         ("http://localhost:3000", true),
